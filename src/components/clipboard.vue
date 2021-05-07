@@ -19,13 +19,14 @@
                   ></b-form-input>
                 </b-form-group>
 
-
+                <br>
                 <b-button type="submit" variant="primary">Submit</b-button>
                 <b-button type="reset" variant="danger">Reset</b-button>
                 <br>
+                <br>
                 <span>Clipboard:</span>
-                <ul id="clipboard">
-                  <li v-for="(input, index) in inputs" :key="index">
+                <ul id="example-1">
+                  <li v-for="(input, i) in inputs" :key="i">
                     {{ input }}
                   </li>
                 </ul>
@@ -53,6 +54,7 @@ export default {
     onSubmit(event) {
       event.preventDefault()
       this.inputs.push(this.form.text)
+      this.form.text = ""
     },
     onReset(event) {
       event.preventDefault()
