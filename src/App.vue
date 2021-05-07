@@ -1,12 +1,12 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <img alt="Clipboard logo" src="./assets/logo.png">
+    <clipboard/>
   </div>
 </template>
 
 <script>
-import clipboard from './components/HelloWorld.vue'
+import clipboard from './components/clipboard.vue'
 
 export default {
   name: 'App',
