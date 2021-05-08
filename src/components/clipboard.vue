@@ -39,6 +39,8 @@
 </template>
 
 <script>
+import api from "../../api"
+
 export default {
   name: 'HelloWorld',
   data() {
@@ -50,17 +52,23 @@ export default {
       inputs: [],
     }
   },
+  beforeCreate: async function() {
+    let response = await (api.getAll())
+    this.inputs = response.data
+  },
   methods: {
-    onSubmit(event) {
+    onSubmit: async function (event) {
       event.preventDefault()
-      this.inputs.push(this.form.text)
+      let response = await (api.add(this.form.text))
+      this.inputs = response.data
       this.form.text = ""
     },
-    onReset(event) {
+    onReset: async function (event) {
       event.preventDefault()
       // Reset our form values
       this.form.text = ""
-      this.inputs = []
+      let response = await (api.clear())
+      this.inputs = response.data
       // Trick to reset/clear native browser form validation state
       this.show = false
       this.$nextTick(() => {
